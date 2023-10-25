@@ -2,7 +2,9 @@
 
 - ### Variables
   - >`Define('name', value)`: Definir constantes
-  - >
+  - >**Variable variables**: permite utilizar el valor de una variable como el nombre de otra variable.<p align="center">
+   <img alt="simbolos de patrones" src="imgs/variable_variables.png"></p>
+   - 
 - ### Bucles
   - >`for(varibale; condicion; incremento)`
   - >`while(condicion)`
@@ -79,4 +81,4 @@
   - >**Modificar php.ini**: _display_errors = (false, off o "0")_ (mala practica)
   - >**die() o exit;**: Ejemplo: `file_exists("file.txt") or die ("File not found");`
   - >**Uso de excepciones**: no se como explicar esto pregúntale al [Mister](https://chat.openai.com)
-  - 
+  
