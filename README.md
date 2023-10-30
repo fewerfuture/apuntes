@@ -23,7 +23,7 @@
   * * *
   <p align="center">
     <img alt="simbolos de patrones" src="imgs/patterns.png">
-    <img alt="sibolos 2" src="imgs/patterns2.png">
+    <img alt="sibolos 2" src="imgs/patterns2.png" height="312px">
   </p>
 - ### Modularizar codigo
   - Reusar codigo en diferentes sitios.
@@ -49,15 +49,19 @@
   - >`date(format, date)`: obtiene una cadena de texto formateando la fecha con el formato indicado
   - > `strtotime(text)`: convierte un texto que intenta representar una fecha en una fecha determinada
 - ### File handler
-  - >`fopen(path)`; abre el archivo **devuelve booleano** 
+  - >`fopen(path)`; abre el archivo o lo crea si no existe **devuelve booleano**<p align='center'><img src='imgs/modes.png'></p>
   - >`fclose(path)`; cierra el archivo **devuelve booleano** 
   - >`file_exists($fichero)`; compueba si el archivo existe **devuelve booleano** 
   - >`readfile(file)`: lee un archivo entero y lo vuelca en el búfer de salida (es decir, en la página que se está generando, si estamos en una página PHP).
   - >`file('file', FILE_IGNORE_NEW_LINES)`: lee un fichero entero y devuelve un array o lista, donde en cada posición hay una línea del fichero
   - >`file_get_contents()`: lee un archivo entero y lo devuelve en un string (no en una matriz, como la anterior)
-  - >`file_put_contents (file, text)`: sobreescribiendo su contenido anterior si lo tenía. para añadir se pone esto como tercer parámetro FILE_APPEND.
-  - >`file_exists()`: aprende ingles si no sabes que hace esto
-  - >`filesize()`: devuelve el tamaño en bytes del archivo, o FALSE si no existe
+  - >`file_put_contents (file, text)`: sobrescribiendo su contenido anterior si lo tenía. para añadir se pone esto como tercer parámetro FILE_APPEND.
+  - >`file_exists($file)`: aprende ingles si no sabes que hace esto
+  - >`filesize($file)`: devuelve el tamaño en bytes del archivo, o FALSE si no existe
+  - >`fget()`: se utiliza para leer una sola linea del archivo (si no se especifica lee la 1º linea)
+  - >`feof()`: ("end-of-file") Comprueba si se ha alcanzado la ultima linea del archivo. Util para recorrer archivos de longitud indefinida.
+  - >`fgetc()`: leer un solo carácter del archivo (se suele utilizar en bucles).
+  - >`fwrite($file, $string)`: escribir en un archivo.
 - ### Arrays
   - #### Tipos
     - >**Numerico**: la key es un numero _array[0]_
@@ -71,7 +75,7 @@
     - >`ksort(array) | krsort(array)`: ordena asociativos por la key <p align="center">
       <img alt="simbolos de patrones" src="imgs/ksort.png">   </p>
     - >`usort(array, function)`: ordena un array según la función que el usuario defina como segundo parámetro.
-    - >`array_filter(array, funcion_filtrado)`: devuelve un array con los elementos del array original que pasan la función de filtrado indicada.
+    - >`array_filter(array, funcion_filtrado)`: devuelve un array con los elementos del array original que pasan la función de filtrado indicada.<p>**Nota:** Después de ser ejecutado el puntero se mueve a la siguiente linea</p>
     - >`print_r()`: para imprimir un array
 - - -
 >**Nota**: <=> Spaceship $x <=> $y Devuelve un entero menor, igual o mayor que cero, dependiendo de si $x es menor, igual o mayor que $y.
@@ -80,5 +84,32 @@
   - >**Operador @**: se pone delante de una operación y no muestra nada en caso de error
   - >**Modificar php.ini**: _display_errors = (false, off o "0")_ (mala practica)
   - >**die() o exit;**: Ejemplo: `file_exists("file.txt") or die ("File not found");`
-  - >**Uso de excepciones**: no se como explicar esto pregúntale al [Mister](https://chat.openai.com)
+  - >**Uso de excepciones**: con `try{codigo} catch(Exception ex){codigo}` try ejecuta un codigo y catch coge cualquier tipo de exception si la hay.
+
+- ### Cookies
+  - Una cookie se utiliza a menudo para identificar a un usuario.
+  - >`setcookie(name, value, expire, path, domain, secure, httponly)`: crear cookie (solo name es obligatorio).
+  - >**Eliminar:**Se pone el expire en negativo.
+  - >`$_COOKIE['name']`: para utilizar la cookie.
+  - >**Comprobar si hay cookies:**`if(count($_COOKIE) > 0){echo "Cookies are enabled."}` 
+
+- ### Session
+  - Una sesión es una forma de almacenar información (en variables) para utilizarla en varias páginas.
+  - >`session_start()`: Iniciar una session.
+  - >`$_SESSION["name"] = "value";`:Para darle valor a una session.
+  - >`$_SEESION['name']`: Utilizar la variable.
+  - >**Eliminar:**
+    >> - `session_unset()`: Elimina todas las variables de session.
+    >> - `session_destroy()`: Destruye la session.
+
+>**Nota:** La función session_start() debe ser lo primero en su documento. Antes de cualquier etiqueta HTML. Tiene que estar en cualquier pagina que se utilice la variable _$_SEESION['name']_
+
+- ### AJAX - PHP
+  - **Definición:**AJAX permite actualizar páginas web de forma asíncrona intercambiando pequeñas cantidades de datos con el servidor. Esto significa que es posible actualizar partes de una página web sin recargara entera.
+  - >`const xmlhttp = new XMLHttpRequest()`: inicializar y declarar la respuesta http.
+  - >`xmlhttp.onreadystatechange = function() {}`: Cuando la respuesta este preparada ejecutara la función.
+  - >`if (this.readyState == 4 && this.status == 200)`: Comprueba que el servidor este levantado. (dentro de este if se pone el cambio que se quiere hacer en el html)
+  - >`xmlhttp.open("METHOD", "pagina.php", true);`: method puede ser get o post, pagina.php la pagina de la que vamos a obtener la respuesta.
+  - >`xmlhttp.send()`: Para enviar el xmlhttp.
+  - >`this.responseText`: Para obtener el texto que devuelva pagina.php
   
