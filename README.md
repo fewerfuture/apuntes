@@ -4,15 +4,18 @@
   - >`Define('name', value)`: Definir constantes
   - >**Variable variables**: permite utilizar el valor de una variable como el nombre de otra variable.<p align="center">
    <img alt="simbolos de patrones" src="imgs/variable_variables.png"></p>
-   - 
+
+
 - ### Bucles
   - >`for(varibale; condicion; incremento)`
   - >`while(condicion)`
   - >`do{codigo} while(condicion)`
   - >`foreach(array as value) | foreach(array as key => value)`: key se refiere a la posición _array[0]_ o al nombre en caso de ser asociativo _array['name']_ 
+
 - ### Condicionales
   - >`if(condicion) | else(condicion) | else if(condicion)`
-  - >`swith(condicion){case(value); codigo; break;}`
+  - >`swith(condicion){case "value": //código break;}`
+
 - ### Expresiones regulares
   - #### Funciones
     - >`preg_replace (pattern, replacement, string)`:examina la cadena en busca de coincidencias de patrón y sustituye el texto encontrado por el texto de sustitución.
@@ -25,43 +28,7 @@
     <img alt="simbolos de patrones" src="imgs/patterns.png">
     <img alt="sibolos 2" src="imgs/patterns2.png" height="312px">
   </p>
-- ### Modularizar codigo
-  - Reusar codigo en diferentes sitios.
-  - >`include`: inlcuye siempre (si no se puede da un aviso pero carga la pagina)
-  - >`include_once`: solo incluye si no se ha incluido ya
-  - >`require`: emite un error si no se ha podido incluir (no carga la pagina)
-  - >`rquire_once`: igual que el anterior pero lo incluye si no ha sido incluido
-- ### Text handling
-  - >`trim()`: **quitar espacios** tanto delante como detras del string
-  - >`number_format(number, decimals)`: muestra los decimales especificados
-  - >`htmlspecialchars()`: formatea caracteres especiales a html
-  - >`strtoupper()`: convierte el string a mayúsculas
-  - >`strtolower()`: convierte el string a minúsculas
-  - >`explode(separator, string)`: separa el string por el separador indicado **return array()**
-  - >`implode(separador, array)`: junta el array en un string y los separa por el separador **return string**
-  - >`strcmp(string1, string2)`: compara que string es mas largo
-  - >`strlen(string)`: numero de caracteres
-  - >`strpos(string, part)`: posición en la que empieza **part**(es un string)
-  - >`str_replace(oldchain, newchain , string)`: reemplaza **newchain** por **oldchain** dentro del string dado
-- ### Handling dates and times
-  - >`time()`: da el número de segundos que han transcurrido desde el 1/1/1970
-  - >`checkdate(month, day, year)`: compueba si la fecha esta bien **return bool**
-  - >`date(format, date)`: obtiene una cadena de texto formateando la fecha con el formato indicado
-  - > `strtotime(text)`: convierte un texto que intenta representar una fecha en una fecha determinada
-- ### File handler
-  - >`fopen(path)`; abre el archivo o lo crea si no existe **devuelve booleano**<p align='center'><img src='imgs/modes.png'></p>
-  - >`fclose(path)`; cierra el archivo **devuelve booleano** 
-  - >`file_exists($fichero)`; compueba si el archivo existe **devuelve booleano** 
-  - >`readfile(file)`: lee un archivo entero y lo vuelca en el búfer de salida (es decir, en la página que se está generando, si estamos en una página PHP).
-  - >`file('file', FILE_IGNORE_NEW_LINES)`: lee un fichero entero y devuelve un array o lista, donde en cada posición hay una línea del fichero
-  - >`file_get_contents()`: lee un archivo entero y lo devuelve en un string (no en una matriz, como la anterior)
-  - >`file_put_contents (file, text)`: sobrescribiendo su contenido anterior si lo tenía. para añadir se pone esto como tercer parámetro FILE_APPEND.
-  - >`file_exists($file)`: aprende ingles si no sabes que hace esto
-  - >`filesize($file)`: devuelve el tamaño en bytes del archivo, o FALSE si no existe
-  - >`fget()`: se utiliza para leer una sola linea del archivo (si no se especifica lee la 1º linea)
-  - >`feof()`: ("end-of-file") Comprueba si se ha alcanzado la ultima linea del archivo. Util para recorrer archivos de longitud indefinida.
-  - >`fgetc()`: leer un solo carácter del archivo (se suele utilizar en bucles).
-  - >`fwrite($file, $string)`: escribir en un archivo.
+
 - ### Arrays
   - #### Tipos
     - >**Numerico**: la key es un numero _array[0]_
@@ -80,6 +47,48 @@
 - - -
 >**Nota**: <=> Spaceship $x <=> $y Devuelve un entero menor, igual o mayor que cero, dependiendo de si $x es menor, igual o mayor que $y.
 - - -
+
+- ### Text handling
+  - >`trim()`: **quitar espacios** tanto delante como detras del string
+  - >`number_format(number, decimals)`: muestra los decimales especificados
+  - >`htmlspecialchars()`: formatea caracteres especiales a html
+  - >`strtoupper()`: convierte el string a mayúsculas
+  - >`strtolower()`: convierte el string a minúsculas
+  - >`explode(separator, string)`: separa el string por el separador indicado **return array()**
+  - >`implode(separador, array)`: junta el array en un string y los separa por el separador **return string**
+  - >`strcmp(string1, string2)`: compara que string es mas largo
+  - >`strlen(string)`: numero de caracteres
+  - >`strpos(string, part)`: posición en la que empieza **part**(es un string)
+  - >`str_replace(oldchain, newchain , string)`: reemplaza **newchain** por **oldchain** dentro del string dado
+
+- ### Handling dates and times
+  - >`time()`: da el número de segundos que han transcurrido desde el 1/1/1970
+  - >`checkdate(month, day, year)`: compueba si la fecha esta bien **return bool**
+  - >`date(format, date)`: obtiene una cadena de texto formateando la fecha con el formato indicado
+  - > `strtotime(text)`: convierte un texto que intenta representar una fecha en una fecha determinada
+
+- ### File handler
+  - >`fopen(path)`; abre el archivo o lo crea si no existe **devuelve booleano**<p align='center'><img src='imgs/modes.png'></p>
+  - >`fclose(path)`; cierra el archivo **devuelve booleano** 
+  - >`file_exists($fichero)`; compueba si el archivo existe **devuelve booleano** 
+  - >`readfile(file)`: lee un archivo entero y lo vuelca en el búfer de salida (es decir, en la página que se está generando, si estamos en una página PHP).
+  - >`file('file', FILE_IGNORE_NEW_LINES)`: lee un fichero entero y devuelve un array o lista, donde en cada posición hay una línea del fichero
+  - >`file_get_contents()`: lee un archivo entero y lo devuelve en un string (no en una matriz, como la anterior)
+  - >`file_put_contents (file, text)`: sobrescribiendo su contenido anterior si lo tenía. para añadir se pone esto como tercer parámetro FILE_APPEND.
+  - >`file_exists($file)`: aprende ingles si no sabes que hace esto
+  - >`filesize($file)`: devuelve el tamaño en bytes del archivo, o FALSE si no existe
+  - >`fget()`: se utiliza para leer una sola linea del archivo (si no se especifica lee la 1º linea)
+  - >`feof()`: ("end-of-file") Comprueba si se ha alcanzado la ultima linea del archivo. Util para recorrer archivos de longitud indefinida.
+  - >`fgetc()`: leer un solo carácter del archivo (se suele utilizar en bucles).
+  - >`fwrite($file, $string)`: escribir en un archivo.
+
+- ### Modularizar codigo
+  - Reusar codigo en diferentes sitios.
+  - >`include`: inlcuye siempre (si no se puede da un aviso pero carga la pagina)
+  - >`include_once`: solo incluye si no se ha incluido ya
+  - >`require`: emite un error si no se ha podido incluir (no carga la pagina)
+  - >`rquire_once`: igual que el anterior pero lo incluye si no ha sido incluido
+
 - ### Error management
   - >**Operador @**: se pone delante de una operación y no muestra nada en caso de error
   - >**Modificar php.ini**: _display_errors = (false, off o "0")_ (mala practica)
